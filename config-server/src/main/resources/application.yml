@@ -1,0 +1,28 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jhon-smith-05/config-repo
+          default-label: main
+          #search-paths: '{application}'
+          clone-on-start: true
+
+  # Seguridad básica (opcional)
+  security:
+    user:
+      name: config-user
+      password: config-password
+
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
